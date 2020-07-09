@@ -143,11 +143,11 @@
                             <span><a href="${baseUrl}/web/etl/fieldList.do?entityId=${etlEntity.id}" target="rightFrame"><img src="${baseUrl}/img/chakan.png">映射字段</a></span>
                             <c:if test="${etlEntity.exec == 0}">
                                 <span id="etl_job_start_${vs.index}"><a href="javascript:startEtlJob('${etlEntity.id}','${vs.index}');" target="rightFrame"><img src="${baseUrl}/img/bianji.png">执行ETL任务</a></span>
-                                <span id="etl_job_stop_${vs.index}" style="display: none;"><a href="javascript:stopEtlJob('${etlEntity.id}', '${vs.index}');" target="rightFrame"><img src="${baseUrl}/img/sync.png">停止任务</a></span>
+                                <span id="etl_job_stop_${vs.index}" style="display: none;"><a href="javascript:stopEtlJob('${etlEntity.id}', '${vs.index}');" target="rightFrame"><img src="${baseUrl}/img/sync.png">停止ETL任务</a></span>
                             </c:if>
 
                             <c:if test="${etlEntity.exec == 1}">
-                                <span id="etl_job_start_${vs.index}" style="display: none;"><a href="javascript:startEtlJob('${etlEntity.id}','${vs.index}');" target="rightFrame"><img src="${baseUrl}/img/bianji.png">执行任务</a></span>
+                                <span id="etl_job_start_${vs.index}" style="display: none;"><a href="javascript:startEtlJob('${etlEntity.id}','${vs.index}');" target="rightFrame"><img src="${baseUrl}/img/bianji.png">执行ETL任务</a></span>
                                 <span id="etl_job_stop_${vs.index}"><a href="javascript:stopEtlJob('${etlEntity.id}','${vs.index}');" target="rightFrame"><img src="${baseUrl}/img/sync.png">停止ETL任务</a></span>
                             </c:if>
 
