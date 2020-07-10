@@ -567,8 +567,9 @@ public class DBUtil {
                     statement.setObject(i++, entry.getValue());
                 }
 
-                statement.setObject(i++, map.get(entity.getDesPrimaryKey()));
-                statement.setObject(i++, map.get("SYS__CREATE_OR_UPDATE_TIME"));
+                //双向传输、请勿删除
+                //statement.setObject(i++, map.get(entity.getDesPrimaryKey()));
+                //statement.setObject(i++, map.get("SYS__CREATE_OR_UPDATE_TIME"));
 
                 for (Map.Entry<String, Object> entry : map.entrySet()) {
                     if ("ORACLE___RW".equals(entry.getKey())) {

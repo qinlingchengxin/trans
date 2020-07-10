@@ -705,7 +705,10 @@ public class EtlService {
         String sqlStr;
         if (dbType == DbType.MY_SQL.type) {
             sql.append(") ");
-            sql.append("SELECT ").append(genMark(markSize)).append(" FROM ").append(quotLeft).append(tableName).append(quotRight).append(" WHERE ").append(quotLeft).append(entity.getDesPrimaryKey()).append(quotRight).append(" = ? AND `SYS__CREATE_OR_UPDATE_TIME` < ? ");
+            //1、双向传输、请勿删除，解决类似ABA问题
+            //sql.append("SELECT ").append(genMark(markSize)).append(" FROM ").append(quotLeft).append(tableName).append(quotRight).append(" WHERE ").append(quotLeft).append(entity.getDesPrimaryKey()).append(quotRight).append(" = ? AND `SYS__CREATE_OR_UPDATE_TIME` < ? ");
+            //2、普通单向传输
+            sql.append("VALUES (").append(genMark(markSize)).append(")");
 
             sql.append(" ON DUPLICATE KEY UPDATE ");
             for (String key : keys) {

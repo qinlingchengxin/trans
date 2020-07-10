@@ -140,7 +140,7 @@
                     <span class="title">目标表名</span>
                     <select id="doc-ipt-desTabName-1" name="desTabName" onchange="changePk(this.value, 1);">
                         <c:forEach items="${desTables}" var="desTable">
-                            <option id="des_tab_${srcTable.name}" data_tab_id="${desTable.id}" value="${desTable.name}"
+                            <option id="des_tab_${desTable.name}" data_tab_id="${desTable.id}" value="${desTable.name}"
                                     <c:if test="${fn:toUpperCase(desTable.name) == fn:toUpperCase(etlEntity.desTabName)}">selected="selected"</c:if>>${desTable.name}</option>
                         </c:forEach>
                     </select>
