@@ -28,6 +28,22 @@
                 }
             });
         }
+
+        function addAll() {
+            $.ajax({
+                url: "${baseUrl}/web/etl/addAll.do?entityId=${entityId}",
+                type: "POST",
+                dataType: "json",
+                success: function (result) {
+                    if (result.code == 1000) {
+                        alert('添加成功');
+                    } else {
+                        alert(result.msg);
+                    }
+                }
+            });
+        }
+
     </script>
 </head>
 <body>
@@ -41,6 +57,7 @@
             <div class="fr operation">
                 <span><a href="${baseUrl}/web/etl/fieldList.do?entityId=${entityId}" target="rightFrame"> <img src="${baseUrl}/img/flush.png">刷新</a></span>
                 <span><a href="${baseUrl}/web/etl/fieldEdit.do?entityId=${entityId}" target="rightFrame"> <img src="${baseUrl}/img/zengjia.png">新增</a></span>
+                <span><a href="javascript:void(0);" onclick="addAll();"> <img src="${baseUrl}/img/flush.png">一键</a></span>
             </div>
         </div>
         <div class="third">

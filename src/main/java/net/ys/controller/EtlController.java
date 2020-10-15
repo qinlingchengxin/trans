@@ -491,6 +491,37 @@ public class EtlController {
         return modelAndView;
     }
 
+    /**
+     * 添加所有
+     *
+     * @param entityId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "addAll")
+    public Map<String, Object> addAll(@RequestParam(defaultValue = "") String entityId) {
+        try {
+            EtlProject project = etlService.queryEtlKtrProject(entityId);
+            EtlEntity entity = etlService.queryEtlEntity(entityId);
+
+            EtlAllTable srcTable = etlService.querySrcEtlAllTable(project.getId(), entity.getSrcTabName());
+
+            List<EtlAllField> srcFields = etlService.queryFields(srcTable);
+            for (EtlAllField srcField : srcFields) {
+                EtlField etlField = new EtlField();
+                etlField.setEntityId(entityId);
+                etlField.setSrcFieldName(srcField.getName());
+                etlField.setDesFieldName(srcField.getName());
+                etlService.addEtlField(etlField);
+            }
+
+            return GenResult.SUCCESS.genResult();
+        } catch (Exception e) {
+            LogUtil.error(e);
+            return GenResult.UNKNOWN_ERROR.genResult();
+        }
+    }
+
     @RequestMapping(value = "fieldAdd")
     @ResponseBody
     public Map<String, Object> fieldAdd(EtlField etlField) {
