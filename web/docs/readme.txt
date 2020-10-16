@@ -20,3 +20,5 @@
 
     5、maven私库需要添加kettle的相关私库镜像：
         http://nexus.pentaho.org/content/groups/omni/
+
+    6、需要将kettle.properties文件放到home目录的.kettle文件夹下，否则不起作用，待研究
